@@ -34,7 +34,7 @@ class PurchaseOrder extends Client
             )
         );
 
-        $body = json_decode((string) $response->getBody());
+        $body = json_decode((string) $response->getBody(), true);
 
         return $body;
     }
@@ -56,8 +56,23 @@ class PurchaseOrder extends Client
         );
     }
 
-    public function getById($id)
+    /**
+     * Get purchase order by ID
+     * 
+     * @return array
+     */
+    public function getById($id, $options = array())
     {
-        
+        $response = $this->client->request(
+            'GET',
+            self::SERVICE_URI . '/' . $id,
+            array(
+                'query' => $options
+            )
+        );
+
+        $body = json_decode((string) $response->getBody(), true);
+
+        return $body;
     }
 }
