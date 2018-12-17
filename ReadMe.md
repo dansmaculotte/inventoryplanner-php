@@ -46,7 +46,7 @@ use DansMaCulotte\InventoryPlanner\PurchaseOrder;
 $po = new PurchaseOrder(API_KEY, ACCOUNT_ID);
 $results = $po->getById('aaaaaabbbbbbccccccdddddd');
 
-print_r($results['purchase-orders']);
+print_r($results['purchase-order']);
 ```
 
 ## License
