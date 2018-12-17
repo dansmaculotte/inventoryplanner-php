@@ -14,7 +14,40 @@ composer require dansmaculotte/inventoryplanner-php
 
 ## Usage
 
-ToDo
+### Purchase Order
+
+#### List purchase orders
+
+```php
+use DansMaCulotte\InventoryPlanner\PurchaseOrder;
+
+$po = new PurchaseOrder(API_KEY, ACCOUNT_ID);
+$results = $po->list();
+
+print_r($results['purchase-orders']);
+```
+
+#### Get opened purchase orders
+
+```php
+use DansMaCulotte\InventoryPlanner\PurchaseOrder;
+
+$po = new PurchaseOrder(API_KEY, ACCOUNT_ID);
+$results = $po->listOpened();
+
+print_r($results['purchase-orders']);
+```
+
+#### Get purchase order by Id
+
+```php
+use DansMaCulotte\InventoryPlanner\PurchaseOrder;
+
+$po = new PurchaseOrder(API_KEY, ACCOUNT_ID);
+$results = $po->getById('aaaaaabbbbbbccccccdddddd');
+
+print_r($results['purchase-orders']);
+```
 
 ## License
 

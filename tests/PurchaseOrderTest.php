@@ -29,7 +29,7 @@ class PurchaseOrderTest extends TestCase
     public function testGetById()
     {
         $po = new PurchaseOrder($this->apiKey, $this->accountId);
-        $result = $po->getById('5bbb537c178a381aab78ec63');
+        $result = $po->getById('aaaaaabbbbbbccccccdddddd');
 
         print_r($result['purchase-order']);
     }

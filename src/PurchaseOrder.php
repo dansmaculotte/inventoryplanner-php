@@ -22,6 +22,8 @@ class PurchaseOrder extends Client
     /**
      * List purchase orders
      * 
+     * @param array $options Filters, paging and sorting options 
+     * 
      * @return array
      */
     public function list($options = array())
@@ -42,6 +44,8 @@ class PurchaseOrder extends Client
     /**
      * List opened purchase orders
      * 
+     * @param array $options Filters, paging and sorting options 
+     * 
      * @return array
      */
     public function listOpened($options = array())
@@ -57,7 +61,10 @@ class PurchaseOrder extends Client
     }
 
     /**
-     * Get purchase order by ID
+     * Get purchase order by Id
+     * 
+     * @param string $id      Purchase order Id to get
+     * @param array  $options Filters, paging and sorting options 
      * 
      * @return array
      */
@@ -66,6 +73,52 @@ class PurchaseOrder extends Client
         $response = $this->client->request(
             'GET',
             self::SERVICE_URI . '/' . $id,
+            array(
+                'query' => $options
+            )
+        );
+
+        $body = json_decode((string) $response->getBody(), true);
+
+        return $body;
+    }
+
+    /**
+     * Get purchase order items by Id
+     * 
+     * @param string $id      Purchase order Id to get
+     * @param array  $options Filters, paging and sorting options 
+     * 
+     * @return array
+     */
+    public function getItemsById($id, $options = array())
+    {
+        $response = $this->client->request(
+            'GET',
+            self::SERVICE_URI . '/' . $id . '/items',
+            array(
+                'query' => $options
+            )
+        );
+
+        $body = json_decode((string) $response->getBody(), true);
+
+        return $body;
+    }
+
+    /**
+     * Get purchase order connections by Id
+     * 
+     * @param string $id      Purchase order Id to get
+     * @param array  $options Filters, paging and sorting options 
+     * 
+     * @return array
+     */
+    public function getConnectionsById($id, $options = array())
+    {
+        $response = $this->client->request(
+            'GET',
+            self::SERVICE_URI . '/' . $id . '/connections',
             array(
                 'query' => $options
             )

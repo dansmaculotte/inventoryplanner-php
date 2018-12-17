@@ -11,6 +11,12 @@ class Client
 
     public $client;
 
+    /**
+     * Construct Method
+     * 
+     * @param string $apiKey    Inventory Planner API Key
+     * @param string $accountId Inventory Planner Account ID
+     */
     public function __construct($apiKey, $accountId)
     {
         $this->client = new HttpClient(
