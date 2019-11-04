@@ -54,7 +54,7 @@ class PurchaseOrder extends Client
             array_merge(
                 $options,
                 array(
-                    'status' => 'OPEN'
+                    'status' => 'open'
                 )
             )
         );
