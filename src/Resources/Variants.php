@@ -1,12 +1,12 @@
 <?php
 
-namespace DansMaCulotte\InventoryPlanner;
+namespace DansMaCulotte\InventoryPlanner\Resources;
 
 use DansMaCulotte\InventoryPlanner\Client;
 
-class PurchaseOrder extends Client
+class Variant extends Client
 {
-    const SERVICE_URI = '/api/v1/purchase-orders';
+    const SERVICE_URI = '/api/v1/variants';
 
     /**
      * Construct Method
@@ -20,7 +20,7 @@ class PurchaseOrder extends Client
     }
 
     /**
-     * List purchase orders
+     * List variants
      * 
      * @param array $options Filters, paging and sorting options 
      * 
@@ -42,28 +42,9 @@ class PurchaseOrder extends Client
     }
 
     /**
-     * List opened purchase orders
+     * Get variant by Id
      * 
-     * @param array $options Filters, paging and sorting options 
-     * 
-     * @return array
-     */
-    public function listOpened($options = array())
-    {
-        return $this->list(
-            array_merge(
-                $options,
-                array(
-                    'status' => 'open'
-                )
-            )
-        );
-    }
-
-    /**
-     * Get purchase order by Id
-     * 
-     * @param string $id      Purchase order Id to get
+     * @param string $id      Variant Id to get
      * @param array  $options Filters, paging and sorting options 
      * 
      * @return array
@@ -84,41 +65,18 @@ class PurchaseOrder extends Client
     }
 
     /**
-     * Get purchase order items by Id
+     * Get variant vendors by Id
      * 
-     * @param string $id      Purchase order Id to get
+     * @param string $id      Variant Id to get
      * @param array  $options Filters, paging and sorting options 
      * 
      * @return array
      */
-    public function getItemsById($id, $options = array())
+    public function getVendorsById($id, $options = array())
     {
         $response = $this->client->request(
             'GET',
-            self::SERVICE_URI . '/' . $id . '/items',
-            array(
-                'query' => $options
-            )
-        );
-
-        $body = json_decode((string) $response->getBody(), true);
-
-        return $body;
-    }
-
-    /**
-     * Get purchase order connections by Id
-     * 
-     * @param string $id      Purchase order Id to get
-     * @param array  $options Filters, paging and sorting options 
-     * 
-     * @return array
-     */
-    public function getConnectionsById($id, $options = array())
-    {
-        $response = $this->client->request(
-            'GET',
-            self::SERVICE_URI . '/' . $id . '/connections',
+            self::SERVICE_URI . '/' . $id . '/vendors',
             array(
                 'query' => $options
             )

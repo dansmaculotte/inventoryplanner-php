@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use DansMaCulotte\InventoryPlanner\PurchaseOrder;
+use DansMaCulotte\InventoryPlanner\Resources\PurchaseOrder;
 
 require 'Credentials.php';
 
