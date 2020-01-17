@@ -19,12 +19,4 @@ class SalesOrders {
         'currency',
         'canceled',
     ];
-
-    public function __construct() {
-
-    }
-
-    public function addProducts() {
-
-    }
 }

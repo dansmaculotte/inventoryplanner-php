@@ -33,12 +33,4 @@ class Products {
         'moq',
         'uom',
     ];
-
-    public function __construct() {
-
-    }
-
-    public function addProducts() {
-
-    }
 }

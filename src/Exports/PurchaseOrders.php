@@ -25,12 +25,4 @@ class PurchaseOrders {
         'tax',
         'tax_included',
     ];
-
-    public function __construct() {
-
-    }
-
-    public function addProducts() {
-
-    }
 }
